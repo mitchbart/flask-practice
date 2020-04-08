@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    </head>
+    <body>
+        <h1>Hello there!</h1>
+        <p>{{ids}}</p>
+        <p>{{figuresJSON}}</p>
+        <div id="{{ids[0]}}"></div>
+
+        <script type="text/javascript">
+            // plots the figure with id
+            // id much match the div id above in the html
+            var figures = {{figuresJSON | safe}};
+            var ids = {{ids | safe}};
+            for(var i in figures) {
+                Plotly.plot(ids[i],
+                    figures[i].data,
+                    figures[i].layout || {});
+            }
+        </script>
+        <script src="" async defer></script>
+    </body>
+</html>
